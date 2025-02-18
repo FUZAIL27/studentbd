@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class StudentAssignment {
-    // HashMap to store students by their regno (unique key)
+    
     private static HashMap<Integer, Studentdemo> studentMap = new HashMap<>();
 
 
