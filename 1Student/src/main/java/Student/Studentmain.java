@@ -1,51 +1,76 @@
 package Student;
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
 
+import java.util.Scanner;
 
 public class Studentmain {
-    public static  void main(String args[]) {
-        List<Studentdemo> students=new ArrayList<>();
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-    System.out.println("enter student");
-    int numOfStudents=scan.nextInt();
-    scan.nextLine();
+        int option;
 
-        for(int i=0;i<numOfStudents;i++){
+        do {
+            System.out.println("************** STUDENT DETAILS SYSTEM ************");
+            System.out.println("\n1. CREATE STUDENT RECORDS");
+            System.out.println("2. VIEW STUDENT BY REG NO.");
+            System.out.println("3. VIEW ALLSTUDENT DETAILS.  ");
+            System.out.println("4. UPDATE STUDENT RECORD.");
+            System.out.println("5. EXIT");
+            System.out.println("\nENTER YOUR OPTION:");
+            option = scan.nextInt();
 
-        System.out.print("enter name:");
-        String name=scan.nextLine();
+            switch (option) {
 
-        System.out.print("enter dept:");
-        String dept=scan.nextLine();
+                case 1:
+                    System.out.println("Enter student details to create a new record:");
+                    System.out.print("Enter Name: ");
+                    scan.nextLine();
+                    String name = scan.nextLine();
+                    System.out.print("Enter Department: ");
+                    String dept = scan.nextLine();
+                    System.out.print("Enter Section: ");
+                    String section = scan.nextLine();
+                    System.out.print("Enter Reg No: ");
+                    int regNo = scan.nextInt();
+
+                    StudentAssignment.createStudentRecord(name, dept, section, regNo);
+                    break;
+
+                case 2:
+                    System.out.println("Enter REG. NO of STUDENT:");
+                    int regNoToView = scan.nextInt();
+                    StudentAssignment.viewStudentByRegno(regNoToView);
+                    break;
 
 
-        System.out.println("enter section:");
-        String section =scan.nextLine();
+                case 3:
+                    StudentAssignment.viewAllStudents();
 
-        System.out.print("enter regno:");
-        int regno =scan.nextInt();
+                    break;
 
-scan.nextLine();
+                case 4:
+                    System.out.println("Enter REG NO of student to update:");
+                    int regNoToUpdate = scan.nextInt();
+                    scan.nextLine(); // consume newline
+                    System.out.println("Enter new Name: ");
+                    String newName = scan.nextLine();
+                    System.out.println("Enter new Department: ");
+                    String newDept = scan.nextLine();
+                    System.out.println("Enter new Section: ");
+                    String newSection = scan.nextLine();
 
+                    StudentAssignment.updateStudentRecord(regNoToUpdate, newName, newDept, newSection);
+                    break;
 
-         Studentdemo studentDemo=new Studentdemo(name,dept,section,regno);
+                case 5:
+                    System.out.println("Exiting the student details management system.");
+                    break;
 
-        students.add(studentDemo);
-    }
+                default:
 
-        System.out.println("------------------------------------------------------------------------------------");
-        System.out.printf("%20s%15s%15s%15s", "NAME", "DEPT", "REGNO", "SECTION");
-        System.out.println();
-        System.out.println("--------------------------------------------------");
-    for(Studentdemo student:students){
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        } while (option != 5);
 
-        System.out.printf("%20s%15s%15s%15s", student.getName(), student.getSection(), student.getDept(), student.getRegno());
-        System.out.println();
-        System.out.println("--------------------------------------------------");
-    }
-
-scan.close();
+        scan.close();
     }
 }

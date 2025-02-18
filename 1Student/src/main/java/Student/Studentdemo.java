@@ -1,36 +1,38 @@
-
 package Student;
 
 public class Studentdemo {
-    public int regno;
-    public String name;
-    public String section;
-    public String dept;
+    private int regno;
+    private String name;
+    private String section;
+    private String dept;
 
-    public Studentdemo(String name,String dept,String section,int regno){
-        this.name=name;
-        this.dept=dept;
-        this.regno=regno;
-        this.section=section;
-
+    // Constructor to initialize the student object
+    public Studentdemo(String name, String dept, String section, int regno) {
+        this.name = name;
+        this.dept = dept;
+        this.regno = regno;
+        this.section = section;
     }
 
-    public  int getRegno() {
-        return this.regno;
+    // Getter methods
+    public int getRegno() {
+        return regno;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public String getDept() {
-        return this.dept;
+        return dept;
     }
 
     public String getSection() {
-        return this.section;
+        return section;
     }
 
-
-
+    @Override
+    public String toString() {
+        return String.format("%-20s%-15s%-15s%-15s", name, dept, regno, section);
+    }
 }
