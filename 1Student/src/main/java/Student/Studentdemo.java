@@ -6,7 +6,7 @@ public class Studentdemo {
     private String section;
     private String dept;
 
-    // Constructor to initialize the student object
+   
     public Studentdemo(String name, String dept, String section, int regno) {
         this.name = name;
         this.dept = dept;
